@@ -8,11 +8,11 @@ feature 'headhunter creates an account' do
 
     fill_in 'Email', with: 'ale@ale.com'
     fill_in 'Senha', with: '12345678'
-    fill_in 'Confirmação de Senha', with: '12345678'
+    fill_in 'Confirme sua senha', with: '12345678'
     click_on 'Criar conta'
 
     expect(current_path).to eq root_path
-    expect(page).to have_content('Welcome! You have signed up successfully.')
+    expect(page).to have_content('Bem vindo! Você realizou seu registro com sucesso.')
     expect(page).to have_content("Olá ale@ale.com")
     expect(page).to have_link('Sair')
     
@@ -25,11 +25,11 @@ feature 'headhunter creates an account' do
 
     fill_in 'Email', with: 'ale@ale.com'
     fill_in 'Senha', with: '12345678'
-    fill_in 'Confirmação de Senha', with: '12345678'
+    fill_in 'Confirme sua senha', with: '12345678'
     click_on 'Criar conta'
 
     expect(current_path).to eq root_path
-    expect(page).to have_content('Welcome! You have signed up successfully.')
+    expect(page).to have_content('Bem vindo! Você realizou seu registro com sucesso.')
     expect(page).to have_content("Olá ale@ale.com")
     expect(page).to have_link('Sair')
     expect(page).not_to have_link('Tenho uma vaga')

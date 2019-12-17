@@ -11,10 +11,10 @@ feature 'candidate sign in' do
 
     fill_in 'Email', with: candidate.email
     fill_in 'Senha', with: candidate.password
-    click_on 'Entrar'
+    click_on 'Login'
 
     expect(current_path).to eq root_path
-    expect(page).to have_content('Signed in successfully.')
+    expect(page).to have_content('Login efetuado com sucesso.')
     expect(page).to have_content("Olá #{candidate.email}")
     expect(page).to have_link('Sair')
 
@@ -30,9 +30,10 @@ feature 'candidate sign in' do
 
     fill_in 'Email', with: candidate.email
     fill_in 'Senha', with: candidate.password
-    click_on 'Entrar'
+    click_on 'Login'
 
     expect(current_path).to eq root_path
+    expect(page).to have_content('Login efetuado com sucesso.')
     expect(page).not_to have_link('Acessar como Candidato')
 
   end
@@ -47,10 +48,11 @@ feature 'candidate sign in' do
 
     fill_in 'Email', with: candidate.email
     fill_in 'Senha', with: candidate.password
-    click_on 'Entrar'
+    click_on 'Login'
     click_on 'Sair'
 
     expect(current_path).to eq root_path
+    expect(page).to have_content('Logout efetuado com sucesso.')
     expect(page).to have_link('Acessar como Candidato')
     
   end
