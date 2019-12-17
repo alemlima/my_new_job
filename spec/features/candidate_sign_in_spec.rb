@@ -2,7 +2,7 @@ require 'rails_helper'
 
 feature 'candidate sign in' do
     
-  scenario 'from home page' do
+  scenario 'successfully ' do
     candidate = Candidate.create!(email: 'ale@ale.com', password: '12345678')
 
     visit root_path
