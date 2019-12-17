@@ -10,7 +10,22 @@
   </head>
 
   <body>
-  
+    <% if headhunter_signed_in? %>
+      <span>Olá <%= current_headhunter.email%></span>
+      <%= link_to 'Sair', destroy_headhunter_session_path, method: :delete %>
+    <% else %>
+      <%= link_to 'Acessar como Headhunter', new_headhunter_session_path %>  
+      <%= link_to 'Tenho uma vaga', new_headhunter_registration_path %>  
+    <% end %>
+
+    <% if candidate_signed_in? %>
+      <span>Olá <%= current_candidate.email%></span>
+      <%= link_to 'Sair', destroy_candidate_session_path, method: :delete %>
+    <% else %>
+      <%= link_to 'Acessar como Candidato', new_candidate_session_path %>  
+      <%= link_to 'Quero uma vaga', new_candidate_registration_path %>
+    <% end %>
+
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
 
