@@ -2,6 +2,9 @@ require 'rails_helper'
   feature 'Headhunter register a new job position' do
     scenario 'successfully' do
       
+      headhunter = Headhunter.create!(email: 'ale@ale.com', password:'12345678')
+      login_as(headhunter, scope: :headhunter)
+
       visit root_path
       click_on 'Vagas'
       click_on 'Cadastrar nova vaga'
@@ -12,12 +15,13 @@ require 'rails_helper'
       fill_in 'Habilidades desejadas', with: 'Boa lógica de programação, noções de boas práticas
                                               em desenvolvimento de software, noções de metodologia ágil'
       fill_in 'Faixa salarial', with: 2000
-      select 'Estágio', from: 'Nível'
-      select 'Estágio', from: 'Contratação'
+      choose 'job_skill_level_estagiário'
+      choose 'job_contract_type_estágio'
       fill_in 'Data limite', with: 2.days.from_now
       fill_in 'Localização', with: 'Vila Madalena'
+      find("#job_headhunter_id", visible: false).set("#{headhunter.id}")
 
-      click_on('Cadastrar vaga')
+      click_on('Cadastrar Vaga')
 
       expect(page).to have_content('Vaga cadastrada com sucesso')
       expect(page).to have_css('h3', text: 'Estágio em Desenvolvimento de Software')

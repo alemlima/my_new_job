@@ -1,5 +1,7 @@
 <h1>Vagas:</h1>
-<%# @jobs.empty? %>
+ <% @jobs.empty?%>
   <p>Não existem vagas cadastradas</p>
 
-<%= link_to 'Cadastrar nova vaga', new_job_path %>  
+<% if current_headhunter %>
+  <%= link_to 'Cadastrar nova vaga', new_job_path %>
+<% end %>    

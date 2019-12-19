@@ -1,4 +1,6 @@
 class JobsController < ApplicationController
+  before_action :authenticate_headhunter!, only:[:new, :create]
+  
   
   def index
     @jobs = Job.all
@@ -12,11 +14,14 @@ class JobsController < ApplicationController
     @job = Job.new(job_params)
 
     if @job.save
-      redirect_to @job, notice: 'Vaga criada com sucesso.'
+      redirect_to @job, notice: 'Vaga cadastrada com sucesso.'
     else
       #erro
       render :new
     end
+  end
+  def show
+    @job = Job.find(params[:id])
   end
 
   private

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_18_015824) do
+ActiveRecord::Schema.define(version: 2019_12_18_210223) do
 
   create_table "candidates", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 2019_12_18_015824) do
     t.string "description"
     t.string "desired_skills"
     t.string "skill_level"
-    t.string "concract_type"
+    t.string "contract_type"
     t.string "localization"
     t.decimal "salary"
     t.date "limit_date"

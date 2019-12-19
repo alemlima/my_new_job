@@ -1,0 +1,12 @@
+pt-BR:
+  activerecord:
+    attributes:
+      job:
+        title: Título
+        description: Descrição
+        desired_skills: Habilidades desejadas
+        skill_level: Nível
+        contract_type: Contratação
+        localization: Localização
+        salary: Faixa salarial
+        limit_date: Data limite

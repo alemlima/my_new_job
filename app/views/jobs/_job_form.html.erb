@@ -1,0 +1,57 @@
+<% if job.errors.any?%>
+  <p>Por favor, verifique os erros e tente novamente:</p>
+<ul>
+  <%job.errors.full_messages.each do |message| %>  
+    <li><%= message %></li>
+  <% end %>
+</ul>
+<% end %>
+
+<%= form_with model: job, local: true do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %><br>
+  <%= f.label :description %>
+  <%= f.text_area :description %><br>
+  <%= f.label :desired_skills %>
+  <%= f.text_area :desired_skills %><br>
+
+  <p>Nível da vaga:</p>
+    <%= f.radio_button(:skill_level, 'Estagiário')%>
+    <%= f.label(:skill_level, 'Estagiário')%>
+
+    <%= f.radio_button(:skill_level, 'Júnior')%>
+    <%= f.label(:skill_level, 'Júnior')%>
+
+    <%= f.radio_button(:skill_level, 'Pleno')%>
+    <%= f.label(:skill_level, 'Pleno')%>
+
+    <%= f.radio_button(:skill_level, 'Sênior')%>
+    <%= f.label(:skill_level, 'Sênior')%>
+
+    <%= f.radio_button(:skill_level, 'Gerente')%>
+    <%= f.label(:skill_level, 'Gerente')%>
+
+    
+    <%= f.radio_button(:skill_level, 'Diretor')%>
+    <%= f.label(:skill_level, 'Diretor')%><br>
+    
+  <%= f.label :localization %>
+  <%= f.text_field :localization %><br>
+  <%= f.label :salary %>
+  <%= f.number_field :salary %><br>
+  <%= f.label :limit_date %>
+  <%= f.date_field :limit_date %><br>
+
+  <p>Tipo de contrato:</p>
+    <%= f.radio_button(:contract_type, 'Estágio')%>
+    <%= f.label(:contract_type, 'Estágio')%>
+
+    <%= f.radio_button(:contract_type, 'CLT')%>
+    <%= f.label(:contract_type, 'CLT')%> 
+
+    <%= f.radio_button(:contract_type, 'PJ')%>
+    <%= f.label(:contract_type, 'PJ')%><br>
+
+  <%= f.hidden_field(:headhunter_id, :value => current_headhunter.id) %><br>
+  <%= f.submit 'Cadastrar Vaga'%>
+<% end %>
