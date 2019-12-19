@@ -1,0 +1,20 @@
+<% if @profile.social_name.present? %>
+  <h3><%= @profile.social_name%><h3>
+<% else %>
+  <h3><%= @profile.name%></h3>
+<% end %>
+
+<dl>
+  <dt>Formação:</dt>
+  <dd><%= @profile.academic_background %></dd>
+  <dt>Sobre Você:</dt>
+  <dd><%= @profile.description %></dd>
+  <dt>Experiência Profissional:</dt>
+  <dd><%= @profile.professional_background %></dd>
+  <dt>Linkedin:</dt>
+  <dd><%= @profile.social_network %></dd>
+  <dt>Data de nascimento:</dt>
+  <dd><%= @profile.birth_date %></dd>
+</dl>	
+
+<%= link_to 'Voltar', root_path %>

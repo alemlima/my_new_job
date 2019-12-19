@@ -1,0 +1,12 @@
+pt-BR:
+  activerecord:
+    attributes:
+      candidate_profile:
+        name: Nome
+        social_name: Nome social
+        academic_background: Formação
+        description: Sobre você
+        professional_background: Experiência profissional
+        photo: Foto
+        social_network: Linkedin
+        birth_date: Data de nascimento

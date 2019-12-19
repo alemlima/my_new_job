@@ -1,0 +1,29 @@
+<% if profile.errors.any?%>
+  <p>Por favor, verifique os erros e tente novamente:</p>
+<ul>
+  <%profile.errors.full_messages.each do |message| %>  
+    <li><%= message %></li>
+  <% end %>
+</ul>
+<% end %>
+
+<%= form_with model: profile, local: true do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %><br>
+  <%= f.label :social_name %>
+  <%= f.text_field :social_name %><br>
+  <%= f.label :academic_background %>
+  <%= f.text_area :academic_background %><br>
+  <%= f.label :description %>
+  <%= f.text_area :description %><br>
+  <%= f.label :professional_background %>
+  <%= f.text_area :professional_background %><br>
+  <%= f.label :photo %>
+  <%= f.text_field :photo %><br>
+  <%= f.label :social_network %>
+  <%= f.text_field :social_network %><br>
+  <%= f.label :birth_date %>
+  <%= f.date_field :birth_date %><br>
+  <%= f.hidden_field(:candidate_id, :value => current_candidate.id) %><br>
+  <%= f.submit 'Enviar'%>
+<% end %>
