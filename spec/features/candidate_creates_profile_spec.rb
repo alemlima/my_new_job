@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-feature 'candidate fill in profile' do
-  scenario 'successfully' do
+feature 'candidate creates profile' do
+  scenario ' and fill in all fields' do
     
     candidate = Candidate.create!(email: 'teste@teste.com', password:'123456')
     login_as(candidate, scope: :candidate)
@@ -24,6 +24,30 @@ feature 'candidate fill in profile' do
     expect(page).to have_content('Perfil cadastrado com sucesso')
 
     expect(page).to have_css('h3', text: 'Alexandre Moreira Lima')
+    expect(page).to have_content('Status do perfil: complete')
+
+    expect(page).to have_link('Voltar')
+
+  end
+
+  scenario ' and does not fill in all fields' do
+    
+    candidate = Candidate.create!(email: 'teste@teste.com', password:'123456')
+    login_as(candidate, scope: :candidate)
+
+    visit new_candidate_profile_path
+    
+    
+    fill_in 'Nome', with: 'Alexandre Moreira Lima'
+    
+    find("#candidate_profile_candidate_id", visible: false).set("#{candidate.id}")
+
+    click_on 'Enviar'
+
+    expect(page).to have_content('Perfil cadastrado com sucesso')
+
+    expect(page).to have_css('h3', text: 'Alexandre Moreira Lima')
+    expect(page).to have_content('Status do perfil: incomplete')
 
     expect(page).to have_link('Voltar')
 
