@@ -19,7 +19,7 @@ feature 'candidate creates profile' do
     fill_in 'Data de nascimento', with: 34.years.ago
     find("#candidate_profile_candidate_id", visible: false).set("#{candidate.id}")
 
-    click_on 'Enviar'
+    click_on 'Salvar perfil'
 
     expect(page).to have_content('Perfil cadastrado com sucesso')
 
@@ -42,7 +42,7 @@ feature 'candidate creates profile' do
     
     find("#candidate_profile_candidate_id", visible: false).set("#{candidate.id}")
 
-    click_on 'Enviar'
+    click_on 'Salvar perfil'
 
     expect(page).to have_content('Perfil cadastrado com sucesso')
 
@@ -70,7 +70,7 @@ feature 'candidate creates profile' do
     fill_in 'Data de nascimento', with: 34.years.ago
     find("#candidate_profile_candidate_id", visible: false).set("#{candidate.id}")
 
-    click_on 'Enviar'
+    click_on 'Salvar perfil'
     click_on 'Voltar'
 
     expect(current_path).to eq root_path

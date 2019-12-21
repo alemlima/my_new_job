@@ -1,0 +1,6 @@
+<nav>
+  <% if candidate_signed_in? && current_candidate.candidate_profile.present? %>
+    <%= link_to 'Meu perfil', candidate_profile_path(current_candidate.candidate_profile.id) %>
+    <%= link_to 'Vagas', jobs_path %>
+  <% end %>  
+</nav>

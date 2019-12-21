@@ -1,5 +1,6 @@
 class CandidateProfilesController < ApplicationController
   before_action :authenticate_candidate!, only: [:new, :create]
+  before_action :find_profile, only: [:show, :edit, :update]
     
   def new
     @profile = CandidateProfile.new
@@ -19,11 +20,27 @@ class CandidateProfilesController < ApplicationController
   end
 
   def show
-    @profile = CandidateProfile.find(params[:id])
     
   end
 
+  def edit
+    
+  end
+  
+  def update
+    
+    if @profile.update(profile_params)
+      redirect_to @profile, notice: 'Perfil atualizado com sucesso'
+    else
+      render :edit
+    end
+  end
+
   private
+
+  def find_profile
+    @profile = CandidateProfile.find(params[:id])
+  end
 
   def profile_params
     params.require(:candidate_profile).permit(:name, :social_name, :academic_background,
