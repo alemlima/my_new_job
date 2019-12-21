@@ -10,26 +10,24 @@ class CandidateProfilesController < ApplicationController
    @profile = CandidateProfile.new(profile_params)
    
     if @profile.save
-      redirect_to @profile, notice: 'Perfil cadastrado com sucesso'
       @profile.complete! if @profile.filled_up?
+      redirect_to @profile, notice: 'Perfil cadastrado com sucesso'
     else
       #erro
       render :new
     end
-    
   end
 
   def show
-    
   end
 
   def edit
-    
   end
   
   def update
     
     if @profile.update(profile_params)
+      @profile.complete! if @profile.filled_up?
       redirect_to @profile, notice: 'Perfil atualizado com sucesso'
     else
       render :edit

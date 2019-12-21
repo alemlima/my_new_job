@@ -1,6 +1,6 @@
 class JobsController < ApplicationController
   before_action :authenticate_headhunter!, only:[:new, :create]
-  
+  before_action :find_job, only:[:show, :edit, :update]
   
   def index
     @jobs = Job.all
@@ -20,8 +20,19 @@ class JobsController < ApplicationController
       render :new
     end
   end
+
+  def edit
+  end
+
+  def update
+    if @job.update(job_params)
+      redirect_to @job, notice: 'Vaga atualizada com sucesso'
+    else
+      render :edit
+    end
+  end
+
   def show
-    @job = Job.find(params[:id])
   end
 
   private
@@ -32,4 +43,7 @@ class JobsController < ApplicationController
                                 :salary, :limit_date, :headhunter_id)
   end
 
+  def find_job
+    @job = Job.find(params[:id])
+  end
 end

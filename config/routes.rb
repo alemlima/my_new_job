@@ -3,6 +3,6 @@ Rails.application.routes.draw do
   devise_for :headhunters
   
   root to: 'home#index'
-  resources :jobs, only: [:index, :show, :new, :create]
+  resources :jobs, only: [:index, :new, :create, :show,  :edit, :update]
   resources :candidate_profiles, only: [:new, :create, :edit, :show, :update]
 end

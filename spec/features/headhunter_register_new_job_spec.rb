@@ -21,7 +21,7 @@ require 'rails_helper'
       fill_in 'Localização', with: 'Vila Madalena'
       find("#job_headhunter_id", visible: false).set("#{headhunter.id}")
 
-      click_on('Cadastrar Vaga')
+      click_on('Enviar')
 
       expect(page).to have_content('Vaga cadastrada com sucesso')
       expect(page).to have_css('h3', text: 'Estágio em Desenvolvimento de Software')
@@ -50,7 +50,7 @@ require 'rails_helper'
       fill_in 'Localização', with: 'Vila Madalena'
       find("#job_headhunter_id", visible: false).set("#{headhunter.id}")
 
-      click_on('Cadastrar Vaga')
+      click_on('Enviar')
       click_on('Voltar')
 
       expect(current_path).to eq root_path

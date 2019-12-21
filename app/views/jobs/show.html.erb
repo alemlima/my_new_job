@@ -15,6 +15,9 @@
   <dd><%= @job.salary %></dd>
   <dt>Data limite para aplicação:</dt>
   <dd><%= @job.limit_date %></dd>
-</dl>	
+</dl>
+<% if current_headhunter.id.eql?(@job.headhunter_id) %>	
+  <%= link_to 'Editar vaga', edit_job_path(@job) %>
+<% end %> 
 
 <%= link_to 'Voltar', root_path %>
