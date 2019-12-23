@@ -11,7 +11,6 @@ feature 'candidate creates an account' do
     fill_in 'Confirme sua senha', with: '12345678'
     click_on 'Criar conta'
 
-    expect(current_path).to eq root_path
     expect(page).to have_content('Bem vindo! Você realizou seu registro com sucesso.')
     expect(page).to have_content("Olá ale@ale.com")
     expect(page).to have_link('Sair')
@@ -28,7 +27,7 @@ feature 'candidate creates an account' do
     fill_in 'Confirme sua senha', with: '12345678'
     click_on 'Criar conta'
 
-    expect(current_path).to eq root_path
+    
     expect(page).to have_content('Bem vindo! Você realizou seu registro com sucesso.')
     expect(page).to have_content("Olá ale@ale.com")
     expect(page).to have_link('Sair')
