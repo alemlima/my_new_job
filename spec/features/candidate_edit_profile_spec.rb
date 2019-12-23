@@ -19,12 +19,12 @@ describe 'candidate edits profile'do
     fill_in 'Sobre você', with: 'Profissional com experiência em ....'
     fill_in 'Experiência profissional', with: '4/2017 - Atual - Desenvolvedor Rails - Rebase - 
                                                atuando com desenvolvimento Rails ....'
-    fill_in 'Foto', with: 'foto.jpg'
+    attach_file('Foto','/home/ale/Downloads/foto.jpg')
     fill_in 'Linkedin', with: 'linkedin.com/alexandrelima'
     fill_in 'Data de nascimento', with: 34.years.ago
 
     click_on 'Salvar perfil'
-
+    
     expect(page).to have_content('Perfil atualizado com sucesso')
 
     expect(page).to have_css('h3', text: 'Alexandre Moreira Lima')
@@ -51,7 +51,6 @@ describe 'candidate edits profile'do
     fill_in 'Formação', with: 'Tecnólogo em Análise e Desenvolvimento de Sistemas - Uninove'
     fill_in 'Sobre você', with: 'Profissional com experiência em ....'
     
-    fill_in 'Foto', with: 'foto.jpg'
     fill_in 'Linkedin', with: 'linkedin.com/alexandrelima'
     fill_in 'Data de nascimento', with: 34.years.ago
 
@@ -83,7 +82,6 @@ describe 'candidate edits profile'do
     fill_in 'Sobre você', with: 'Profissional com experiência em ....'
     fill_in 'Experiência profissional', with: '4/2017 - Atual - Desenvolvedor Rails - Rebase - 
                                                atuando com desenvolvimento Rails ....'
-    fill_in 'Foto', with: 'foto.jpg'
     fill_in 'Linkedin', with: 'linkedin.com/alexandrelima'
     fill_in 'Data de nascimento', with: 34.years.ago
 

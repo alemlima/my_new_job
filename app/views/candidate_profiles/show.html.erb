@@ -3,7 +3,12 @@
 <% else %>
   <h3><%= @profile.name%></h3>
 <% end %>
-
+<p>
+  <strong> Foto do perfil:</strong><br>
+  <% if @profile.photo.attached? %>
+    <%= image_tag( @profile.photo, size: 100) %>
+  <% end %>
+</p>
 <dl>
   <dt>Status do perfil:</dt>
   <dd><%= @profile.status %></dd>

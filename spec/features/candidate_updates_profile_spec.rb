@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'candidate creates profile' do
+feature 'candidate updates profile' do
   scenario ' and fill in all fields' do
     
     candidate = Candidate.create!(email: 'teste@teste.com', password:'123456')
@@ -19,7 +19,7 @@ feature 'candidate creates profile' do
     fill_in 'Sobre você', with: 'Profissional com experiência em ....'
     fill_in 'Experiência profissional', with: '4/2017 - Atual - Desenvolvedor Rails - Rebase - 
                                                atuando com desenvolvimento Rails ....'
-    fill_in 'Foto', with: 'foto.jpg'
+    attach_file('Foto','/home/ale/Downloads/foto.jpg')
     fill_in 'Linkedin', with: 'linkedin.com/alexandrelima'
     fill_in 'Data de nascimento', with: 34.years.ago
     
