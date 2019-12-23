@@ -19,7 +19,7 @@ describe 'candidate edits profile'do
     fill_in 'Sobre você', with: 'Profissional com experiência em ....'
     fill_in 'Experiência profissional', with: '4/2017 - Atual - Desenvolvedor Rails - Rebase - 
                                                atuando com desenvolvimento Rails ....'
-    attach_file('Foto','/home/ale/Downloads/foto.jpg')
+    attach_file('Foto','./spec/support/foto.jpg')
     fill_in 'Linkedin', with: 'linkedin.com/alexandrelima'
     fill_in 'Data de nascimento', with: 34.years.ago
 
