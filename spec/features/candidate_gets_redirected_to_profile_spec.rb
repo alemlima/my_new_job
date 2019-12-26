@@ -27,7 +27,7 @@ describe ' Candidate creates account and gets redirected to fill profile' do
     click_on 'Criar conta'
 
     fill_in 'Nome', with: 'Alexandre Moreira Lima'
-    find('#candidate_profile_candidate_id', visible: false).set(1)
+    
 
     click_on 'Salvar perfil'
 

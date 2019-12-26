@@ -19,7 +19,6 @@ require 'rails_helper'
       choose 'job_contract_type_estágio'
       fill_in 'Data limite', with: 2.days.from_now
       fill_in 'Localização', with: 'Vila Madalena'
-      find("#job_headhunter_id", visible: false).set("#{headhunter.id}")
 
       click_on('Enviar')
 
@@ -48,7 +47,6 @@ require 'rails_helper'
       choose 'job_contract_type_estágio'
       fill_in 'Data limite', with: 2.days.from_now
       fill_in 'Localização', with: 'Vila Madalena'
-      find("#job_headhunter_id", visible: false).set("#{headhunter.id}")
 
       click_on('Enviar')
       click_on('Voltar')

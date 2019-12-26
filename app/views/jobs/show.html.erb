@@ -16,8 +16,17 @@
   <dt>Data limite para aplicação:</dt>
   <dd><%= @job.limit_date %></dd>
 </dl>
-<% if current_headhunter.id.eql?(@job.headhunter_id) %>	
-  <%= link_to 'Editar vaga', edit_job_path(@job) %>
+<% if headhunter_signed_in? %>
+  <% if current_headhunter.id.eql?(@job.headhunter_id) %>	
+    <%= link_to 'Editar vaga', edit_job_path(@job) %>
+  <% end %>
+<% end %>
+<% if candidate_signed_in? %>
+  <% if current_candidate.candidate_profile.complete? %>
+    <%= link_to 'Candidatar-se' %>
+    <% else %>
+    <p>Você deve completar seu perfil para poder candidatar-se as vagas</p>
+  <% end %>
 <% end %> 
 
 <%= link_to 'Voltar', root_path %>

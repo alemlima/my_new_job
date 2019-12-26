@@ -1,12 +1,16 @@
 <h1>Vagas:</h1>
- <% @jobs.empty?%>
+<% if @jobs.empty?%>
   <p>Não existem vagas cadastradas</p>
-
-<% @jobs.each do |job| %>
-  <h3><%= link_to job.title, job_path(job) %></h3>
-  <p><%= job.description%></p>
 <% end %>
+
+      <% @jobs.each do |job| %>
+        <h3><%= link_to job.title, job_path(job) %></h3>
+        <p><%= job.description%></p>
+      <% end %>
+  
 
 <% if headhunter_signed_in? %>
   <%= link_to 'Cadastrar nova vaga', new_job_path %>
 <% end %>    
+
+<%= link_to 'Voltar', root_path %>
