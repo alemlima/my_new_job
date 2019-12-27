@@ -4,7 +4,6 @@ feature 'candidate sign in' do
     
   scenario 'successfully ' do
     candidate = Candidate.create!(email: 'ale@ale.com', password: '12345678')
-    profile = CandidateProfile.create!(name: 'Alexandre Moreira Lima', candidate_id: candidate.id)
 
     visit root_path
 
@@ -14,7 +13,7 @@ feature 'candidate sign in' do
     fill_in 'Senha', with: candidate.password
     click_on 'Login'
 
-    expect(current_path).to eq edit_candidate_profile_path(candidate)
+    expect(current_path).to eq new_candidate_profile_path
     expect(page).to have_content('Login efetuado com sucesso.')
     expect(page).to have_content("Olá #{candidate.email}")
     expect(page).to have_link('Sair')
@@ -23,7 +22,6 @@ feature 'candidate sign in' do
 
   scenario ' and must fill in password ' do
     candidate = Candidate.create!(email: 'ale@ale.com', password: '12345678')
-    profile = CandidateProfile.create!(name: 'Alexandre Moreira Lima', candidate_id: candidate.id)
 
     visit root_path
 
@@ -40,7 +38,6 @@ feature 'candidate sign in' do
 
   scenario ' and must fill in email ' do
     candidate = Candidate.create!(email: 'ale@ale.com', password: '12345678')
-    profile = CandidateProfile.create!(name: 'Alexandre Moreira Lima', candidate_id: candidate.id)
 
     visit root_path
 
@@ -58,7 +55,6 @@ feature 'candidate sign in' do
   scenario ' and does not see Acessar como Candidato when logged in' do
     
     candidate = Candidate.create!(email: 'ale@ale.com', password: '12345678')
-    profile = CandidateProfile.create!(name: 'Alexandre Moreira Lima', candidate_id: candidate.id)
 
     visit root_path
 
@@ -68,7 +64,7 @@ feature 'candidate sign in' do
     fill_in 'Senha', with: candidate.password
     click_on 'Login'
 
-    expect(current_path).to eq edit_candidate_profile_path(candidate)
+    expect(current_path).to eq new_candidate_profile_path
     expect(page).to have_content('Login efetuado com sucesso.')
     expect(page).not_to have_link('Acessar como Candidato')
 
@@ -77,7 +73,6 @@ feature 'candidate sign in' do
   scenario ' and sign_out sucessfully ' do
 
     candidate = Candidate.create!(email: 'ale@ale.com', password: '12345678')
-    profile = CandidateProfile.create!(name: 'Alexandre Moreira Lima', candidate_id: candidate.id)
 
     visit root_path
 
