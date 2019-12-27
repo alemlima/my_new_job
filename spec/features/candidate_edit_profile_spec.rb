@@ -37,6 +37,7 @@ describe 'Candidate edits profile'do
 
     click_on 'Salvar perfil'
     
+
     expect(page).to have_content('Perfil atualizado com sucesso')
 
     expect(page).to have_css('h3', text: 'Alexandre Moreira Lima')
@@ -44,6 +45,7 @@ describe 'Candidate edits profile'do
     expect(page).to have_content('Status do perfil: complete')
 
     expect(page).to have_link('Voltar')
+
   end
 
   scenario ' and does not fill in all fields' do
@@ -76,6 +78,7 @@ describe 'Candidate edits profile'do
 
     expect(page).to have_link('Voltar')
   end
+
   scenario 'and return to home page' do
     
     candidate = Candidate.create!(email: 'ale@ale.com', password: '12345678')

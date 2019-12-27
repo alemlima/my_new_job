@@ -1,6 +1,5 @@
 class CandidateProfilesController < ApplicationController
   before_action :authenticate_candidate!, only: [:new, :create, :edit, :update]
-  after_action :profile_complete, only: [:create, :edit, :update]
   before_action :find_profile, only: [:show, :edit, :update]
   before_action :candidate_id, only: [:show, :edit, :update]
 
@@ -34,10 +33,6 @@ class CandidateProfilesController < ApplicationController
   end
 
   private
-
-  def profile_complete
-    @profile.complete! if @profile.filled_up?
-  end
 
   def candidate_id
     @profile.candidate_id = current_candidate.id
