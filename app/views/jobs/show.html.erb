@@ -1,21 +1,5 @@
-<h3><%= @job.title %></h3>
+<%= render @job %>
 
-<dl>
-  <dt>Descrição da vaga:</dt>
-  <dd><%= @job.description %></dd>
-  <dt>Habilidades desejadas:</dt>
-  <dd><%= @job.desired_skills %></dd>
-  <dt>Nível:</dt>
-  <dd><%= @job.skill_level %></dd>
-  <dt>Contratação:</dt>
-  <dd><%= @job.contract_type %></dd>
-  <dt>Localização:</dt>
-  <dd><%= @job.localization %></dd>
-  <dt>Faixa salarial:</dt>
-  <dd><%= @job.salary %></dd>
-  <dt>Data limite para aplicação:</dt>
-  <dd><%= @job.limit_date %></dd>
-</dl>
 <% if headhunter_signed_in? %>
   <% if current_headhunter.id.eql?(@job.headhunter_id) %>	
     <%= link_to 'Editar vaga', edit_job_path(@job) %>

@@ -3,10 +3,16 @@
   <p>Não existem vagas cadastradas</p>
 <% end %>
 
-      <% @jobs.each do |job| %>
-        <h3><%= link_to job.title, job_path(job) %></h3>
-        <p><%= job.description%></p>
-      <% end %>
+<%= form_with url: search_jobs_path, local: true, method: :get do %>  
+  <%= label_tag :q, 'Buscar vagas'%>
+  <%= text_field_tag :q %>
+  <%= submit_tag 'Buscar'%>
+<% end %>
+
+ <% @jobs.each do |job| %>
+   <h3><%= link_to job.title, job_path(job) %></h3>
+    <p><%= job.description%></p>
+ <% end %>
   
 
 <% if headhunter_signed_in? %>

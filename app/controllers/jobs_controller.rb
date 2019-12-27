@@ -38,6 +38,11 @@ class JobsController < ApplicationController
   def show
   end
 
+  def search
+    @jobs = Job.where('title like ? OR description like ?', "%#{params[:q]}%","%#{params[:q]}%")
+    render :job_search_results
+  end
+
   private
 
   def authenticate!

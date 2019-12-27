@@ -9,7 +9,7 @@ describe 'candidate creates profile' do
                                        social_network: 'linkedin', birth_date: 34.years.ago,
                                        candidate_id: candidate.id)
     profile.photo.attach(io: File.open("./spec/support/foto.jpg"), filename: "foto.jpg", content_type: "image/jpg")
-    profile.complete!
+    profile.complete! if profile.filled_up?
     
     visit root_path
     click_on 'Acessar como Candidato'

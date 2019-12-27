@@ -1,0 +1,12 @@
+<h1>Resultado da busca: </h1>
+
+<% if @jobs.empty?%>
+  <p>Nenhuma vaga encontrada, por favor tente novamente.</p><br>
+<% elsif @jobs.size == 1 %>
+  <p>1 vaga encontrada:</p><br>
+<% else %>
+  <p><%= "#{@jobs.size} vagas encontradas:"%></p><br>  
+<% end %>
+
+<%= render @jobs %>
+<%= link_to 'Voltar', jobs_path%>
