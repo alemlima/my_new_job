@@ -1,6 +1,23 @@
 require 'rails_helper'
 
-describe 'Headhunter edits job' do
+feature 'Headhunter edits job' do
+
+  scenario 'but must be logged in' do
+
+    headhunter = Headhunter.create!(email: 'ale@ale.com', password:'12345678')
+    
+    job = Job.create!(title: 'Estágio Rails', description: 'CRUD e buscar café', 
+                desired_skills: 'Fazer crud e buscar café sem derramar', 
+                skill_level: 'Estagiário', contract_type: 'Estágio', 
+                salary: 1500, localization: 'Paulista', 
+                limit_date: 5.days.from_now, headhunter_id: headhunter.id)
+
+    visit edit_job_path(job)
+
+    expect(current_path).to eq headhunter_session_path
+
+  end
+
   scenario ' successfully' do
 
     headhunter = Headhunter.create!(email: 'ale@ale.com', password:'12345678')

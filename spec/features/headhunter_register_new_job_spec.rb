@@ -1,5 +1,14 @@
 require 'rails_helper'
-  feature 'Headhunter register a new job position' do
+  
+feature 'Headhunter register a new job position' do
+    
+    scenario ' but must be logged in' do
+      visit new_job_path
+
+      expect(current_path).to eq headhunter_session_path
+      
+    end
+
     scenario 'successfully' do
       
       headhunter = Headhunter.create!(email: 'ale@ale.com', password:'12345678')
@@ -26,7 +35,9 @@ require 'rails_helper'
       expect(page).to have_css('h3', text: 'Estágio em Desenvolvimento de Software')
 
       expect(page).to have_link('Voltar')
+    
     end
+
 
     scenario ' and return to home page' do
     

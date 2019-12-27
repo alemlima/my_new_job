@@ -1,6 +1,18 @@
 require  'rails_helper'
 
-describe 'candidate edits profile'do
+describe 'Candidate edits profile'do
+  
+  scenario ' but must be logged in' do
+    candidate = Candidate.create!(email: 'ale@ale.com', password: '12345678')
+    profile = CandidateProfile.create!(name: 'Alexandre Lima', candidate_id: candidate.id)
+
+    visit edit_candidate_profile_path(profile)
+
+    expect(current_path).to eq candidate_session_path
+    
+  end
+
+
   scenario 'and fill in all fields' do
     
     candidate = Candidate.create!(email: 'ale@ale.com', password: '12345678')

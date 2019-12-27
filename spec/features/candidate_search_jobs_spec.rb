@@ -2,6 +2,14 @@ require 'rails_helper'
 
 describe ' Candidate can search for jobs' do
 
+  scenario ' but must be logged in' do
+
+    visit search_jobs_path
+
+    expect(current_path).to eq root_path
+    
+  end
+
   scenario ' with one exact result matching in title' do
     candidate = Candidate.create!(email: 'teste@teste.com', password:'123456')
     profile = CandidateProfile.create!(name: 'Alexandre Moreira Lima', academic_background: 'Tecnólogo em ADS', 
