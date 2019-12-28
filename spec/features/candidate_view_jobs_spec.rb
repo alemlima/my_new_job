@@ -31,7 +31,7 @@ describe 'Candidate view jobs list' do
                                        social_network: 'linkedin', birth_date: 34.years.ago,
                                        candidate_id: candidate.id)
     profile.photo.attach(io: File.open("./spec/support/foto.jpg"), filename: "foto.jpg", content_type: "image/jpg")
-    profile.complete!
+    
 
     login_as(candidate, scope: :candidate)
 
@@ -51,7 +51,7 @@ describe 'Candidate view jobs list' do
                                        social_network: 'linkedin', birth_date: 34.years.ago,
                                        candidate_id: candidate.id)
     profile.photo.attach(io: File.open("./spec/support/foto.jpg"), filename: "foto.jpg", content_type: "image/jpg")
-    profile.complete!
+    
 
     login_as(candidate, scope: :candidate)
 
@@ -60,6 +60,38 @@ describe 'Candidate view jobs list' do
 
   expect(page).to have_content('Não existem vagas cadastradas')
   expect(page).to have_link('Voltar')
+  
+  end
+
+  scenario ' and must have a complete profile to see the jobs' do
+    
+    headhunter = Headhunter.create!(email: 'ale@ale.com', password:'12345678')
+    Job.create!(title: 'Estágio Rails', description: 'CRUD e buscar café', 
+                desired_skills: 'Fazer crud e buscar café sem derramar', 
+                skill_level: 'Estagiário', contract_type: 'Estágio', 
+                salary: 1500, localization: 'Paulista', 
+                limit_date: 5.days.from_now, headhunter_id: headhunter.id)
+
+    Job.create!(title: 'Estágio FullStack', description: 'CRUD e buscar café', 
+                desired_skills: 'Fazer crud e buscar café sem derramar', 
+                skill_level: 'Estagiário', contract_type: 'Estágio', 
+                salary: 1500, localization: 'Paulista', 
+                limit_date: 5.days.from_now, headhunter_id: headhunter.id)            
+
+    candidate = Candidate.create!(email: 'teste@teste.com', password:'123456')
+    profile = CandidateProfile.create!(name: 'Alexandre Moreira Lima', academic_background: 'Tecnólogo em ADS', 
+                                       description: 'Profissional...', professional_background: 'Profissional com experiencia...',
+                                       birth_date: 34.years.ago,
+                                       candidate_id: candidate.id)
+    
+    
+
+    login_as(candidate, scope: :candidate)
+
+  visit root_path
+  
+    expect(page).not_to have_link('Vagas')
+    expect(page).to have_content('Você deve completar seu perfil para ter acesso as vagas!')
   
   end
 
@@ -84,7 +116,7 @@ describe 'Candidate view jobs list' do
                                        social_network: 'linkedin', birth_date: 34.years.ago,
                                        candidate_id: candidate.id)
     profile.photo.attach(io: File.open("./spec/support/foto.jpg"), filename: "foto.jpg", content_type: "image/jpg")
-    profile.complete!
+    
 
     login_as(candidate, scope: :candidate)
 
