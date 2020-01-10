@@ -1,7 +1,7 @@
 class JobsController < ApplicationController
   before_action :authenticate_headhunter!, only:[:new, :create, :edit, :update]
   before_action :authenticate!, only:[:index, :show, :search]
-  before_action :find_job, only:[:show, :edit, :update]
+  before_action :find_job, only:[:show, :edit, :update, :apply_for, :confirm_application_for]
   before_action :headhunter_id, only: [:edit, :update]
   
   def index
@@ -41,6 +41,22 @@ class JobsController < ApplicationController
   def search
     @jobs = Job.where('title like ? OR description like ?', "%#{params[:q]}%","%#{params[:q]}%")
     render :job_search_results
+  end
+
+  def apply_for
+    @job_application = JobApplication.new
+  end
+
+  def confirm_application_for
+    @job_application = JobApplication.new(params.require(:job_application).permit(:cover_letter))
+    @job_application.job_id = @job.id
+    @job_application.candidate_id = current_candidate.id
+    
+    if @job_application.save
+      redirect_to job_application_path(@job_application), notice: 'Candidatura aplicada com sucesso'
+    else
+      render :apply_for
+    end
   end
 
   private

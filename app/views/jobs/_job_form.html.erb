@@ -1,10 +1,10 @@
 <% if job.errors.any?%>
   <p>Por favor, verifique os erros e tente novamente:</p>
-<ul>
-  <%job.errors.full_messages.each do |message| %>  
-    <li><%= message %></li>
-  <% end %>
-</ul>
+  <ul>
+    <%job.errors.full_messages.each do |message| %>  
+      <li><%= message %></li>
+    <% end %>
+  </ul>
 <% end %>
 
 <%= form_with model: job, local: true do |f| %>

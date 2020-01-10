@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
       if current_candidate.candidate_profile.nil?
         new_candidate_profile_path
       elsif current_candidate.candidate_profile.incomplete? 
-        edit_candidate_profile_path(candidate)
+        edit_candidate_profile_path(current_candidate.candidate_profile.id)
       else
         super
       end

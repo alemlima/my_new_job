@@ -7,7 +7,7 @@
 <% end %>
 <% if candidate_signed_in? %>
   <% if current_candidate.candidate_profile.complete? %>
-    <%= link_to 'Candidatar-se' %>
+    <%= link_to 'Candidatar-se', apply_for_job_path%>
     <% else %>
     <p>Você deve completar seu perfil para poder candidatar-se as vagas</p>
   <% end %>

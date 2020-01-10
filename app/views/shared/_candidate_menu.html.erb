@@ -3,6 +3,8 @@
     <%= link_to 'Meu perfil', candidate_profile_path(current_candidate.candidate_profile.id) %>
     <% if current_candidate.candidate_profile.complete?%>
       <%= link_to 'Vagas', jobs_path %>
-    <% end %>%
+    <% else %>
+      <span>Você deve completar seu perfil para ter acesso as vagas!</span>
+    <% end %>
   <% end %>  
 </nav>

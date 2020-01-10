@@ -1,0 +1,11 @@
+<h3>Minha Candidatura:</h3>
+<h4><%= @job.title %></h4>
+
+<dl>
+  <dt>Descrição da vaga:</dt>
+  <dd><%= @job.description %></dd>
+  <dt>Carta de apresentação:</dt>
+  <dd><%= @job_application.cover_letter %></dd>
+</dl>
+<%= link_to 'Voltar', jobs_path %>
+

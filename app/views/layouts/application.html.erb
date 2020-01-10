@@ -26,11 +26,6 @@
         <span>Olá <%= current_candidate.email%></span>
         <%= link_to 'Sair', destroy_candidate_session_path, method: :delete %>
         <%= render partial: '/shared/candidate_menu'%>
-          <% if current_candidate.candidate_profile.present? %>
-            <% if current_candidate.candidate_profile.incomplete? %>
-              <span>Você deve completar seu perfil para ter acesso as vagas!</span>
-            <% end %>
-          <% end %>
       <% elsif !signed_in? %>
         <%= link_to 'Acessar como Candidato', new_candidate_session_path %>  
         <%= link_to 'Quero uma vaga', new_candidate_registration_path %>
