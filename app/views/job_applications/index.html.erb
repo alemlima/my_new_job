@@ -1,4 +1,8 @@
 <h1>Candidaturas:</h1>
+<% if @job_applications.empty?%>
+    <p>Vocẽ não tem candidaturas ativas!</p>
+<% end %>
+
 <% @job_applications.each do |job_application| %>
    <h3><%= link_to job_application.job.title, job_application_path(job_application.id) %></h3>
     <p><%= job_application.job.description%></p>

@@ -11,6 +11,27 @@ describe 'Candidate view job application' do
 
   end
 
+  scenario ' but does not have any job applications' do
+    candidate = Candidate.create!(email: 'ale@ale.com', password:'123456')
+    profile = CandidateProfile.create!(name: 'Alexandre Moreira Lima', academic_background: 'Tecnólogo em ADS', 
+                                      description: 'Profissional...', professional_background: 'Profissional com experiencia...',
+                                      social_network: 'linkedin', birth_date: 34.years.ago,
+                                      candidate_id: candidate.id)
+  profile.photo.attach(io: File.open("./spec/support/foto.jpg"), filename: "foto.jpg", content_type: "image/jpg")
+
+  visit root_path
+  click_on 'Acessar como Candidato'
+
+  fill_in 'Email', with: candidate.email
+  fill_in 'Senha', with: candidate.password
+
+  click_on 'Login'
+  click_on 'Minhas candidaturas'
+
+  expect(page).to have_content('Vocẽ não tem candidaturas ativas!')
+
+  end
+
   scenario ' successfully' do
 
     candidate = Candidate.create!(email: 'ale@ale.com', password:'123456')
