@@ -7,6 +7,7 @@ describe 'Candidate view jobs list' do
     
 
     expect(current_path).to eq root_path
+    expect(page).to have_content('Você deve estar logado para acessar este recurso')
 
   end
 

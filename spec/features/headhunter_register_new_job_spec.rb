@@ -65,10 +65,5 @@ feature 'Headhunter register a new job position' do
       expect(current_path).to eq root_path
     end
     
-    scenario ' and must be logged in' do
-      
-      visit new_job_path
-      
-      expect(current_path).to eq new_headhunter_session_path
-    end
+    
   end

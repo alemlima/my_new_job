@@ -1,6 +1,6 @@
 class JobsController < ApplicationController
   before_action :authenticate_headhunter!, only:[:new, :create, :edit, :update]
-  before_action :authenticate!, only:[:index, :show, :search]
+  before_action :logged, only: [:index, :show, :search]
   before_action :find_job, only:[:show, :edit, :update, :apply_for, :confirm_application_for]
   before_action :headhunter_id, only: [:edit, :update]
   
@@ -61,19 +61,7 @@ class JobsController < ApplicationController
 
   private
 
-  def authenticate!
-    unless current_headhunter || current_candidate
-      redirect_to root_path
-    end
-
-    if candidate_signed_in?
-      :authenticate_candidate!
-    elsif headhunter_signed_in?
-      :authenticate_headhunter!
-    end
-
-  end
-
+  
    def headhunter_id
     @job.headhunter_id = current_headhunter.id
   end

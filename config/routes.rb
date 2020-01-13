@@ -9,5 +9,5 @@ Rails.application.routes.draw do
     get 'apply_for', on: :member
     post 'confirm_application_for', on: :member
   end
-  resources :job_applications, only: [:show, :edit, :update, :delete]
+  resources :job_applications, only: [:index, :show, :edit, :update, :delete]
 end

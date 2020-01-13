@@ -16,5 +16,9 @@ class ApplicationController < ActionController::Base
     end
   end
   
-  
+  def logged
+    unless current_headhunter || current_candidate
+      redirect_to root_path, notice: 'Você deve estar logado para acessar este recurso'
+    end
+  end
 end
