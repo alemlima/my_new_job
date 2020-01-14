@@ -64,7 +64,7 @@ describe 'Candidate view jobs list' do
   
   end
 
-  scenario ' and must have a complete profile to see the jobs' do
+  scenario 'and must have a complete profile to see the jobs' do
     
     headhunter = Headhunter.create!(email: 'ale@ale.com', password:'12345678')
     Job.create!(title: 'Estágio Rails', description: 'CRUD e buscar café', 

@@ -12,9 +12,16 @@
   <dd><%= @job_application.job.description %></dd>
   <dt>Carta de apresentação:</dt>
   <dd><%= @job_application.cover_letter %></dd>
+  <% if @job_application.declined? %>
+    <dt>Feedback:</dt>
+    <dd><%=@job_application.feedback %></dd>
+  <% end %>
 </dl>
 <% if candidate_signed_in?%>
   <%= link_to 'Voltar', jobs_path %>
-<% elsif headhunter_signed_in? %>
+<% elsif headhunter_signed_in? && @job_application.submitted?%>
+  <%= link_to 'Rejeitar candidatura', decline_job_application_path(@job_application)%>
   <%= link_to 'Voltar', :back %>
+<% else %>
+  <%= link_to 'Voltar', job_path(@job_application.job_id) %>
 <% end %>

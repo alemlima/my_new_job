@@ -9,5 +9,8 @@ Rails.application.routes.draw do
     get 'apply_for', on: :member
     post 'confirm_application_for', on: :member
   end
-  resources :job_applications, only: [:index, :show, :edit, :update, :delete]
+  resources :job_applications, only: [:index, :show, :edit, :update, :delete] do
+    get 'decline', on: :member
+    post 'confirm_declination_for', on: :member
+  end
 end

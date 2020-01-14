@@ -1,0 +1,27 @@
+<% if @job_application.errors.any?%>
+  <p>Por favor, verifique os erros e tente novamente:</p>
+  <ul>
+    <%@job_application.errors.full_messages.each do |message| %>  
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<h3>Candidatura de:</h3>
+<p><%= @job_application.candidate.candidate_profile.name %></p>
+
+<h4>Vaga: <%= @job_application.job.title %></h4>
+
+<dl>
+  <dt>Descrição da vaga:</dt>
+  <dd><%= @job_application.job.description %></dd>
+  <dt>Carta de apresentação:</dt>
+  <dd><%= @job_application.cover_letter %></dd>
+</dl>
+
+<%= form_with model: @job_application, url: confirm_declination_for_job_application_path, method: :post do |f| %>
+  <%= f.label :feedback %>
+  <%= f.text_area :feedback%>
+  <%= f.submit 'Enviar'%>
+<% end %>
+<%= link_to 'Voltar', job_path(@job_application.job_id) %>
