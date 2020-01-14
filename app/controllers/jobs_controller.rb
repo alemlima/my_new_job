@@ -36,6 +36,9 @@ class JobsController < ApplicationController
   end
 
   def show
+    if headhunter_signed_in? && @job.headhunter_id.eql?(current_headhunter.id)
+      @job_applications = JobApplication.where('job_id like ?', "#{@job.id}")
+    end
   end
 
   def search

@@ -1,7 +1,8 @@
 class CandidateProfilesController < ApplicationController
   before_action :authenticate_candidate!, only: [:new, :create, :edit, :update]
+  before_action :logged, only: [:show]
   before_action :find_profile, only: [:show, :edit, :update]
-  before_action :candidate_id, only: [:show, :edit, :update]
+  before_action :candidate_id, only: [:edit, :update]
 
   def new
     @profile = CandidateProfile.new
