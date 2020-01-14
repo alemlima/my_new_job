@@ -6,5 +6,8 @@
 <% @job_applications.each do |job_application| %>
    <h3><%= link_to job_application.job.title, job_application_path(job_application.id) %></h3>
     <p><%= job_application.job.description%></p>
+    <% if job_application.declined? %>
+        <p>Candidatura recusada, acesse a candidatura para ver o feedback</p>
+    <% end %>
  <% end %>
  <%= link_to 'Voltar', jobs_path %>
