@@ -4,12 +4,24 @@
 <% elsif candidate_signed_in? %>
   <h3>Proposta: </h3>
 <% end %>
+
 <dl>
   <dt>Vaga:</dt>
   <dd><%= @job_proposal.job_application.job.title %></dd>
   <dt>Descrição da vaga:</dt>
   <dd><%= @job_proposal.job_application.job.description %></dd>
 </dl>
+
+<% if headhunter_signed_in?%>
+  <% unless @job_proposal.submitted? %>
+    <% if @job_proposal.feedback.present?%>
+      <h3>Feedback:</h3>
+      <p><%= @job_proposal.feedback %>
+    <% else %>  
+      <p>O candidato não enviou nenhum feedback sobre esta proposta</p>
+    <% end %>
+  <% end %>  
+<% end %>
 
 <h3>Proposta:</h3>
 <dl>
