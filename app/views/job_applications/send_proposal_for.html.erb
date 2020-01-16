@@ -1,0 +1,34 @@
+<% if @job_proposal.errors.any?%>
+  <p>Por favor, verifique os erros e tente novamente:</p>
+  <ul>
+    <%@job_proposal.errors.full_messages.each do |message| %>  
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<h3>Proposta a candidatura de:</h3>
+<h4><%= @job_application.candidate.candidate_profile.name %></h4>
+
+<dl>
+  <dt>Vaga:</dt>
+  <dd><%= @job_application.job.title %></dd>
+  <dt>Descrição da vaga:</dt>
+  <dd><%= @job_application.job.description %></dd>
+</dl>
+<%= form_with model: @job_proposal, url: confirm_proposal_for_job_application_path, method: :post do |f| %>
+  <%= f.label :start_date %>
+  <%= f.date_field :start_date %>
+  <%= f.label :salary %>
+  <%= f.number_field :salary %>
+  <%= f.label :benefits %>
+  <%= f.text_field :benefits %>
+  <%= f.label :job_roles %>
+  <%= f.text_field :job_roles %>
+  <%= f.label :job_expectations %>
+  <%= f.text_field :job_expectations %>
+  <%= f.label :additional_infos %>
+  <%= f.text_area :additional_infos %>
+  <%= f.submit 'Enviar'%>
+<% end %>
+<%= link_to 'Voltar', jobs_path %>

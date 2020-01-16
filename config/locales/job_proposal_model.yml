@@ -1,0 +1,11 @@
+pt-BR:
+  activerecord:
+    attributes:
+      job_proposal:
+        start_date: Data de início
+        salary: Salário
+        benefits: Benefícios
+        job_roles: Atribuições da vaga
+        job_expectations: Expectativas da empresa
+        additional_infos: Informações adicionais
+        feedback: Feedback

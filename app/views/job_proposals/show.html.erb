@@ -1,0 +1,26 @@
+<h3>Proposta a candidatura de:</h3>
+<h4><%= @job_proposal.job_application.candidate.candidate_profile.name %></h4>
+
+<dl>
+  <dt>Vaga:</dt>
+  <dd><%= @job_proposal.job_application.job.title %></dd>
+  <dt>Descrição da vaga:</dt>
+  <dd><%= @job_proposal.job_application.job.description %></dd>
+</dl>
+
+<h3>Proposta:</h3>
+<dl>
+  <dt>Data de início:</dt>
+  <dd><%= l(@job_proposal.start_date) %></dd>
+  <dt>Salário:</dt>
+  <dd><%= @job_proposal.salary %></dd>
+  <dt>Benefícios:</dt>
+  <dd><%= @job_proposal.benefits %></dd>
+  <dt>Atribuições da vaga:</dt>
+  <dd><%= @job_proposal.job_roles %></dd>
+  <dt>Expectativas da empresa:</dt>
+  <dd><%= @job_proposal.job_expectations %></dd>
+  <dt>Informações adicionais:</dt>
+  <dd><%= @job_proposal.additional_infos %></dd>
+</dl>
+<%= link_to 'Voltar', job_application_path(@job_proposal.job_application.id)%>

@@ -1,14 +1,11 @@
 class JobApplicationsController < ApplicationController
   before_action :authenticate_candidate!, only: [:index]
-  before_action :authenticate_headhunter!, only: [:decline, :confirm_declination_for]
-  before_action :find_job_application, only:[:show, :decline, :confirm_declination_for]
+  before_action :authenticate_headhunter!, only: [:decline, :confirm_declination_for, :send_proposal_for, :confirm_proposal_for]
+  before_action :find_job_application, only:[:show, :decline, :confirm_declination_for, :send_proposal_for, :confirm_proposal_for]
   
 
   def index
-    #if candidate_signed_in?
       @job_applications = JobApplication.where('candidate_id like ?', "#{current_candidate.id}")
-    #end
-
   end
 
   def show
@@ -23,6 +20,20 @@ class JobApplicationsController < ApplicationController
       redirect_to @job_application, notice: 'Candidatura rejeitada com sucesso'
     else
       render :decline
+    end
+  end
+
+  def send_proposal_for
+    @job_proposal = JobProposal.new
+  end
+
+  def confirm_proposal_for
+    @job_proposal = @job_application.create_job_proposal(params.require(:job_proposal).permit(:start_date, :salary, :benefits,
+                                                                                              :job_roles, :job_expectations, :additional_infos))
+    if @job_proposal.save
+      redirect_to job_proposal_path(@job_proposal), notice: 'Proposta enviada com sucesso!'
+    else
+      render :send_proposal_for
     end
   end
 

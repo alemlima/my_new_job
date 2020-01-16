@@ -21,6 +21,7 @@
   <%= link_to 'Voltar', jobs_path %>
 <% elsif headhunter_signed_in? && @job_application.submitted?%>
   <%= link_to 'Rejeitar candidatura', decline_job_application_path(@job_application)%>
+  <%= link_to 'Enviar proposta', send_proposal_for_job_application_path(@job_application) %>
   <%= link_to 'Voltar', :back %>
 <% else %>
   <%= link_to 'Voltar', job_path(@job_application.job_id) %>
