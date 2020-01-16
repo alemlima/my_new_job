@@ -16,5 +16,5 @@ Rails.application.routes.draw do
     post 'confirm_proposal_for', on: :member
   end
 
-  resources :job_proposals, only: [:show, :update]
+  resources :job_proposals, only: [:index, :show, :update]
 end
