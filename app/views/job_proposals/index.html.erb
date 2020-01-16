@@ -1,8 +1,21 @@
-<h1>Minhas propostas:</h1>
-<% if @job_proposals.empty?%>
-    <p>Você ainda não possui nenhuma proposta!</p>
-<% end %>
+<% if candidate_signed_in?%>
+    <h1>Minhas propostas:</h1>
+    <% if @job_proposals.empty?%>
+        <p>Você ainda não possui nenhuma proposta!</p>
+    <% end %>
+ <% end %>
+<% if headhunter_signed_in?%>
+    <h1>Propostas enviadas:</h1>
+    <% if @job_proposals.empty?%>
+        <p>Não foram enviadas propostas a candidaturas!</p>
+    <% end %>
+ <% end %>
+
 <% @job_proposals.each do |job_proposal| %>
-   <h3><%= link_to job_proposal.job_application.job.title, job_proposal_path(job_proposal.id) %></h3>
+   <% if candidate_signed_in?%>
+        <h3><%= link_to job_proposal.job_application.job.title, job_proposal_path(job_proposal.id) %></h3>
+    <% elsif headhunter_signed_in? %>
+        <h3><%= link_to job_proposal.job_application.candidate.candidate_profile.name, job_proposal_path(job_proposal.id) %></h3>
+    <% end %>
 <% end %>
 <%= link_to 'Voltar', root_path %>

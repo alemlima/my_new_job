@@ -30,6 +30,7 @@ class JobApplicationsController < ApplicationController
   def confirm_proposal_for
     @job_proposal = @job_application.create_job_proposal(params.require(:job_proposal).permit(:start_date, :salary, :benefits,
                                                                                               :job_roles, :job_expectations, :additional_infos))
+    @job_proposal.headhunter_id = current_headhunter.id                                                                                          
     if @job_proposal.save
       redirect_to job_proposal_path(@job_proposal), notice: 'Proposta enviada com sucesso!'
     else
