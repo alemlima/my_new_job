@@ -1,0 +1,13 @@
+<h3>Você está recusando a proposta a vaga:</h3>
+<dl>
+  <dt>Vaga:</dt>
+  <dd><%= @job_proposal.job_application.job.title %></dd>
+  <dt>Descrição da vaga:</dt>
+  <dd><%= @job_proposal.job_application.job.description %></dd>
+</dl>
+<%= form_with model: @job_proposal, url: confirm_declination_for_job_proposal_path, method: :post do |f| %>
+  <%= f.label :feedback %>
+  <%= f.text_area :feedback%>
+  <%= f.submit 'Enviar'%>
+<% end %>
+<%= link_to 'Voltar', :back %>

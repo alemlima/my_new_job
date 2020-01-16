@@ -29,5 +29,6 @@
 <% if headhunter_signed_in?%>
   <%= link_to 'Voltar', job_path(@job_proposal.job_application.job.id)%>
 <% elsif candidate_signed_in?%>
+  <%= link_to 'Recusar proposta', decline_job_proposal_path(@job_proposal)%>
   <%= link_to 'Voltar', job_proposals_path%>
 <% end %>

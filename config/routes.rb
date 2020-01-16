@@ -10,11 +10,12 @@ Rails.application.routes.draw do
     post 'confirm_application_for', on: :member
   end
   resources :job_applications, only: [:index, :show, :edit, :update, :delete] do
-    get 'decline', on: :member
-    post 'confirm_declination_for', on: :member
-    get 'send_proposal_for', on: :member
-    post 'confirm_proposal_for', on: :member
+    get 'decline', 'send_proposal_for', on: :member
+    post 'confirm_declination_for', 'confirm_proposal_for', on: :member
   end
 
-  resources :job_proposals, only: [:index, :show, :update]
+  resources :job_proposals, only: [:index, :show, :update] do
+    get 'decline', on: :member
+    post 'confirm_declination_for', on: :member
+  end
 end
