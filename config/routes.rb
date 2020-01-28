@@ -18,4 +18,10 @@ Rails.application.routes.draw do
     get 'decline', on: :member
     post 'confirm_declination_for', on: :member
   end
+
+  namespace :api, defaults: {format: 'json'} do
+    namespace :v1 do
+      resources :jobs, only: %i[show index]
+    end
+  end
 end
