@@ -69,7 +69,7 @@ describe 'Candidate aplly to job' do
 
     click_on 'Enviar'
 
-    expect(page).to have_content('Carta de apresentação deve ser preenchida') 
+    expect(page).to have_content('Carta de apresentação não pode ficar em branco') 
 
   end
 

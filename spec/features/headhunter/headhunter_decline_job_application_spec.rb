@@ -44,7 +44,7 @@ describe 'Headhunter decline job application' do
     
     click_on 'Enviar'
       
-    expect(page).to have_content('Feedback deve ser preenchido')
+    expect(page).to have_content('Feedback não pode ficar em branco')
     expect(page).to have_link('Voltar')
 
   end

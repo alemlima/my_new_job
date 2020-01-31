@@ -1,6 +1,6 @@
 class JobApplication < ApplicationRecord
-  validates :cover_letter, presence: { message: 'deve ser preenchida.'}
-  validates :feedback, presence: { message: 'deve ser preenchido.'}, on: [:update]
+  validates :cover_letter, presence: :true
+  validates :feedback, presence: :true, on: [:update]
   belongs_to :job
   belongs_to :candidate
   has_one    :job_proposal

@@ -39,8 +39,8 @@ describe 'Headhunter send job proposal to candidate' do
 
     click_on 'Enviar'
 
-    expect(page).to have_content('Atribuições da vaga deve ser preenchido.')
-    expect(page).to have_content('Expectativas da empresa deve ser preenchido.')
+    expect(page).to have_content('Atribuições da vaga não pode ficar em branco')
+    expect(page).to have_content('Expectativas da empresa não pode ficar em branco')
       
       
 

@@ -29,7 +29,7 @@ describe ' Candidate creates account and gets redirected to fill profile' do
 
     click_on 'Salvar perfil'
 
-    expect(page).to have_content('Nome deve ser preenchido')
+    expect(page).to have_content('Nome não pode ficar em branco')
 
   end
 
