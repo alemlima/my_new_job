@@ -1,7 +1,7 @@
 class JobApplicationsController < ApplicationController
   before_action :authenticate_candidate!, only: [:index]
   before_action :authenticate_headhunter!, only: [:decline, :confirm_declination_for, :send_proposal_for, :confirm_proposal_for]
-  before_action :find_job_application, only:[:show, :decline, :confirm_declination_for, :send_proposal_for, :confirm_proposal_for]
+  before_action :find_job_application, only:[:show, :decline, :confirm_declination_for, :send_proposal_for, :confirm_proposal_for, :favorite_candidate_for]
   
 
   def index
@@ -9,6 +9,7 @@ class JobApplicationsController < ApplicationController
   end
 
   def show
+    
   end
 
   def decline
@@ -35,6 +36,16 @@ class JobApplicationsController < ApplicationController
       redirect_to job_proposal_path(@job_proposal), notice: 'Proposta enviada com sucesso!'
     else
       render :send_proposal_for
+    end
+  end
+
+  def favorite_candidate_for
+    unless @job_application.favorite?
+      @job_application.update(favorite: true)
+      redirect_to job_path(@job_application.job), notice: 'Candidato adicionado a lista favoritos!'
+    else
+      @job_application.update(favorite: false)
+      redirect_to job_path(@job_application.job), notice: 'Candidato removido da lista de favoritos!'
     end
   end
 

@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   end
   resources :job_applications, only: [:index, :show, :edit, :update, :delete] do
     get 'decline', 'send_proposal_for', on: :member
-    post 'confirm_declination_for', 'confirm_proposal_for', on: :member
+    post 'confirm_declination_for', 'confirm_proposal_for', 'favorite_candidate_for', on: :member
   end
 
   resources :job_proposals, only: [:index, :show, :update] do
