@@ -42,7 +42,7 @@ class JobApplicationsController < ApplicationController
   def favorite_candidate_for
     unless @job_application.favorite?
       @job_application.update(favorite: true)
-      redirect_to job_path(@job_application.job), notice: 'Candidato adicionado a lista favoritos!'
+      redirect_to job_path(@job_application.job), notice: 'Candidato adicionado a lista de favoritos!'
     else
       @job_application.update(favorite: false)
       redirect_to job_path(@job_application.job), notice: 'Candidato removido da lista de favoritos!'

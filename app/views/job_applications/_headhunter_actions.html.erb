@@ -1,0 +1,12 @@
+<% if job_application.submitted? %>
+  <%= link_to 'Rejeitar candidatura', decline_job_application_path(job_application)%>
+    <%= link_to 'Enviar proposta', send_proposal_for_job_application_path(job_application) %>
+    <%= 
+      link_to_unless(job_application.favorite?, "Favoritar candidato", {action: "favorite_candidate_for"}, {method: :post }) do 
+      link_to('Desfavoritar candidato', {action: "favorite_candidate_for"}, {method: :post })
+      end
+    %>
+    <%= link_to 'Voltar', :back %>
+<% else %>
+  <%= link_to 'Voltar', job_path(job_application.job_id) %>
+<% end %>
