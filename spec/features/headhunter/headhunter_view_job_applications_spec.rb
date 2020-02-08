@@ -71,8 +71,8 @@ describe 'Headhunter view job application' do
     click_on 'Vagas'
     click_on 'Estágio Dev'
 
-    expect(page).to have_link('Alexandre Moreira Lima')
-    expect(page).to have_link('Jose Carlos')
+    expect(page).to have_link('Ver perfil de Alexandre Moreira Lima')
+    expect(page).to have_link('Ver perfil de Jose Carlos')
 
   end
 
@@ -109,7 +109,7 @@ describe 'Headhunter view job application' do
 
     click_on 'Vagas'
     click_on 'Estágio Dev'
-    click_on 'Alexandre Moreira Lima'  
+    click_on 'Ver perfil de Alexandre Moreira Lima'  
 
     expect(page).to have_css('h3', text: 'Alexandre Moreira Lima')
     expect(page).to have_css("img[src*='foto.jpg']")
@@ -148,7 +148,7 @@ describe 'Headhunter view job application' do
 
     click_on 'Vagas'
     click_on 'Estágio Dev'
-    click_on 'Alexandre Moreira Lima'  
+    click_on 'Ver perfil de Alexandre Moreira Lima'  
     click_on 'Voltar'
     
     expect(current_path).to eq job_path(job.id)

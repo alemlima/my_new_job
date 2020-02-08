@@ -32,4 +32,5 @@
   <%= link_to 'Voltar', root_path %>
 <% elsif headhunter_signed_in? %>
   <%= link_to 'Voltar', :back %>
+  <%= link_to 'Escrever comentário', new_candidate_profile_comment_path(@profile.id) %>
 <% end %>  

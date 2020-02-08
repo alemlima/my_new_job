@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_02_001645) do
+ActiveRecord::Schema.define(version: 2020_02_07_192733) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -59,6 +59,16 @@ ActiveRecord::Schema.define(version: 2020_02_02_001645) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_candidates_on_email", unique: true
     t.index ["reset_password_token"], name: "index_candidates_on_reset_password_token", unique: true
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.string "body"
+    t.integer "candidate_profile_id"
+    t.integer "headhunter_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["candidate_profile_id"], name: "index_comments_on_candidate_profile_id"
+    t.index ["headhunter_id"], name: "index_comments_on_headhunter_id"
   end
 
   create_table "headhunters", force: :cascade do |t|

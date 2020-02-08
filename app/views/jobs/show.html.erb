@@ -8,7 +8,7 @@
     <p>Ainda não há candidaturas para esta vaga.</p>
   <% else %>
     <% @job_applications.each do |job_application| %>
-      <%= link_to job_application.candidate.candidate_profile.name, candidate_profile_path(job_application.candidate_id)%>
+      <%= link_to "Ver perfil de #{job_application.candidate.candidate_profile.name}", candidate_profile_path(job_application.candidate_id)%>
       <%= link_to "Ver candidatura de #{job_application.candidate.candidate_profile.name}", job_application_path(job_application.id)%>
     <% end %>
   <% end %>

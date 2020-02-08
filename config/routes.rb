@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   devise_for :headhunters
   
   root to: 'home#index'
-  resources :candidate_profiles, only: [:new, :create, :edit, :show, :update]
+  resources :candidate_profiles, only: %i[new create edit show update] do
+    resources :comments, only: %i[new create]
+  end
   resources :jobs, only: [:index, :new, :create, :show,  :edit, :update] do
     get 'search', on: :collection
     get 'apply_for', on: :member
