@@ -25,12 +25,22 @@
     <% if @profile.birth_date.present?%>
       <dd><%= l(@profile.birth_date) %></dd>
     <% end %>
+    <% if @comments.any?%>
+      <% @comments.each do |comment| %>
+        <p>
+          <dt>Comentário:</dt>
+          <dd><%= comment.body%></dd>
+          <dd><%="Comentário enviado em: #{l(comment.created_at, format: :short)}"%></dd>
+        </p>
+      <% end %>
+    <% end %>
   </dl>	
 <% end %>
 <% if candidate_signed_in? %>
   <%= link_to 'Editar perfil', edit_candidate_profile_path(@profile) %>
   <%= link_to 'Voltar', root_path %>
 <% elsif headhunter_signed_in? %>
-  <%= link_to 'Voltar', :back %>
   <%= link_to 'Escrever comentário', new_candidate_profile_comment_path(@profile.id) %>
+  <%= link_to 'Voltar', :back %>
 <% end %>  
+

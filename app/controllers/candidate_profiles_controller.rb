@@ -20,6 +20,7 @@ class CandidateProfilesController < ApplicationController
   end
 
   def show
+    @comments = Comment.where('candidate_profile_id like ?', "#{params[:id]}")
   end
 
   def edit
