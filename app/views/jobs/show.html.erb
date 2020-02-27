@@ -3,6 +3,9 @@
 <% if headhunter_signed_in? %>
   <% if current_headhunter.id.eql?(@job.headhunter_id) %>	
     <%= link_to 'Editar vaga', edit_job_path(@job) %>
+    <% unless @job.closed? %>
+      <%= link_to 'Encerrar vaga', close_job_path(@job), method: :post, data: { confirm:'Deseja encerrar esta vaga?'} %>
+    <% end %>
   <% end %>
   <% if @job_applications.empty? %>
     <p>Ainda não há candidaturas para esta vaga.</p>

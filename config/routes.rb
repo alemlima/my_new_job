@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     get 'search', on: :collection
     get 'apply_for', on: :member
     post 'confirm_application_for', on: :member
+    post 'close', on: :member
   end
   resources :job_applications, only: [:index, :show, :edit, :update, :delete] do
     get 'decline', 'send_proposal_for', on: :member

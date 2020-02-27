@@ -1,7 +1,7 @@
 class JobsController < ApplicationController
   before_action :authenticate_headhunter!, only:[:new, :create, :edit, :update]
   before_action :logged, only: [:index, :show, :search]
-  before_action :find_job, only:[:show, :edit, :update, :apply_for, :confirm_application_for]
+  before_action :find_job, only:[:show, :edit, :update, :apply_for, :confirm_application_for, :close]
   before_action :headhunter_id, only: [:edit, :update]
   
   def index
@@ -60,6 +60,15 @@ class JobsController < ApplicationController
     else
       render :apply_for
     end
+  end
+
+  def close
+    @job.closed!
+      @job.job_application.each do |application|
+        application.feedback = 'Infelizmente a vaga foi encerrada pelo recrutador'
+        application.declined!
+      end
+      redirect_to jobs_path, notice: 'Vaga encerrada com sucesso!'
   end
 
   private
